@@ -1,159 +1,195 @@
 .sudoku-container {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.sudoku-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 1px;
+  border: 3px solid #333;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box;
+}
+
+.sudoku-cell {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border: 1px solid #999;
+  padding: 0;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.prefilled {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.border-bottom-bold {
+  border-bottom: 2px solid #333;
+}
+
+.border-right-bold {
+  border-right: 2px solid #333;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.generate-button,
+.check-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.generate-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.check-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.generate-button:hover,
+.check-button:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+.result-message {
+  margin-top: 15px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Medium screens (tablets & landscape phones) */
+@media (max-width: 768px) {
+  .sudoku-grid {
+    max-width: 360px;
+  }
+
+  .sudoku-cell {
+    font-size: 1.1rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 600px) {
+  .sudoku-container {
+    padding: 15px;
+  }
+
+  .sudoku-grid {
+    max-width: 100%;
+  }
+
+  .sudoku-cell {
+    font-size: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .button-container {
     flex-direction: column;
     align-items: center;
-    max-width: 550px;
-    margin: 0 auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
-  
-  .title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .sudoku-grid {
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    gap: 1px;
-    border: 3px solid #333;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 450px;
-  }
-  
-  .sudoku-cell {
-    width: 100%;
-    aspect-ratio: 1/1;
-    text-align: center;
-    font-size: 1.25rem;
-    font-weight: bold;
-    border: 1px solid #999;
-    padding: 0;
-    background-color: white;
-  }
-  
-  .prefilled {
-    background-color: #f0f0f0;
-    color: #333;
-  }
-  
-  .border-bottom-bold {
-    border-bottom: 2px solid #333;
-  }
-  
-  .border-right-bold {
-    border-right: 2px solid #333;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-    width: 100%;
-    flex-wrap: wrap;
-  }
-  
-  .generate-button, .check-button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .generate-button {
-    background-color: #007bff;
-    color: white;
-  }
-  
+
+  .generate-button,
   .check-button {
-    background-color: #28a745;
-    color: white;
+    width: 100%;
+    margin: 5px 0;
   }
-  
-  .generate-button:hover, .check-button:hover {
-    opacity: 0.85;
-    transform: translateY(-2px);
+}
+
+/* Extra small devices (old phones, narrow screens) */
+@media (max-width: 400px) {
+  .sudoku-container {
+    padding: 10px;
   }
-  
-  .result-message {
-    margin-top: 15px;
-    font-size: 1.25rem;
-    font-weight: bold;
+
+  .title {
+    font-size: 1.3rem;
   }
-  
-  /* Media queries for different screen sizes */
-  @media (max-width: 600px) {
-    .sudoku-container {
-      padding: 15px;
-    }
-    
-    .title {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-    }
-    
-    .sudoku-cell {
-      font-size: 1rem;
-    }
-    
-    .button-container {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .generate-button, .check-button {
-      width: 100%;
-      margin: 5px 0;
-    }
+
+  .sudoku-cell {
+    font-size: 0.9rem;
   }
-  
-  @media (max-width: 400px) {
-    .sudoku-container {
-      padding: 10px;
-    }
-    
-    .title {
-      font-size: 1.25rem;
-    }
-    
-    .sudoku-cell {
-      font-size: 0.9rem;
-    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .sudoku-container {
+    background: #222;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   }
-  
-  /* Make sure the game looks good in dark mode */
-  @media (prefers-color-scheme: dark) {
-    .sudoku-container {
-      background: #222;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    }
-    
-    .title {
-      color: #eee;
-    }
-    
-    .sudoku-cell {
-      background-color: #333;
-      color: #fff;
-      border-color: #555;
-    }
-    
-    .prefilled {
-      background-color: #444;
-      color: #ddd;
-    }
-    
-    .border-bottom-bold, .border-right-bold {
-      border-color: #777;
-    }
+
+  .title {
+    color: #eee;
   }
+
+  .sudoku-cell {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+  }
+
+  .prefilled {
+    background-color: #444;
+    color: #ddd;
+  }
+
+  .border-bottom-bold,
+  .border-right-bold {
+    border-color: #777;
+  }
+
+  .generate-button {
+    background-color: #0056b3;
+  }
+
+  .check-button {
+    background-color: #1c7c36;
+  }
+}
